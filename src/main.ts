@@ -23,7 +23,7 @@ async function bootstrap() {
     exclude: [{ path: '', method: RequestMethod.GET }],
   });
 
-  // api documentation
+  // api documentation 
   const config = new DocumentBuilder()
     .setTitle('Visible One Meeting Booking API')
     .setDescription('The Visible One Meeting Booking API description')
