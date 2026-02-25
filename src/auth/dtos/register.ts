@@ -1,4 +1,11 @@
-import { IsEmail, IsEnum, IsNotEmpty, MinLength } from 'class-validator';
+import {
+  IsEmail,
+  IsEnum,
+  IsNotEmpty,
+  IsOptional,
+  MinLength,
+} from 'class-validator';
+import { UserRole } from 'src/user/dtos/create_user';
 
 export class RegisterDto {
   @IsNotEmpty()
@@ -10,6 +17,7 @@ export class RegisterDto {
   @MinLength(6)
   password: string;
 
-  @IsEnum(['admin', 'owner', 'user'])
-  role: string;
+  @IsOptional()
+  @IsEnum(UserRole)
+  role?: UserRole;
 }
