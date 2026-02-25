@@ -23,6 +23,16 @@ async function bootstrap() {
     exclude: [{ path: '', method: RequestMethod.GET }],
   });
 
+  // enable CORS for specific origins
+  app.enableCors({
+    origin: [
+      'http://localhost:5173', // react local server
+      'https://your-production-frontend.com', // production frontend
+    ],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
+
   // api documentation
   const config = new DocumentBuilder()
     .setTitle('Visible One Meeting Booking API')
