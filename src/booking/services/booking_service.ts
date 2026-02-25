@@ -142,8 +142,8 @@ export class BookingService {
     }
 
     if (
-      existing.userId.toString() !== currentUser.sub &&
-      currentUser.role === 'user'
+      currentUser.role === 'user' &&
+      existing.userId.toString() !== currentUser.id
     ) {
       throw new ForbiddenException(
         'You are not allowed to update this booking',
@@ -204,8 +204,8 @@ export class BookingService {
     }
 
     if (
-      booking.userId.toString() !== currentUser.sub &&
-      currentUser.role === 'user'
+      currentUser.role === 'user' &&
+      existing.userId.toString() !== currentUser.id
     ) {
       throw new ForbiddenException(
         'You are not allowed to delete this booking',
