@@ -21,7 +21,7 @@ export class CreateUserDto {
 
   @IsOptional()
   @IsEnum(UserRole)
-  role: string;
+  role?: UserRole; // ✅ correct typing
 
   @MinLength(6)
   password: string;
