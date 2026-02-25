@@ -1,15 +1,15 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, VERSION_NEUTRAL } from '@nestjs/common';
 
 @Controller({
   path: '',
-  version: '1',
+  version: VERSION_NEUTRAL,
 })
 export class AppController {
-  @Get('')
+  @Get()
   getHello(): any {
     return {
       message: 'Welcome to Visible One Meeting Booking API',
-      documentation: 'Visit at /api for API documentation',
+      documentation: 'Visit at /docs for API documentation',
     };
   }
 }
