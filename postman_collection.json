@@ -1,0 +1,562 @@
+{
+  "info": {
+    "_postman_id": "de22589b-51de-4d0c-bead-4856d96ad75a",
+    "name": "Visible One Booking System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "29527614"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "if (response.access_token) {\r",
+                  "    pm.globals.set(\"token\", response.access_token);\r",
+                  "    console.log(\"Token saved to global variable:\", response.access_token);\r",
+                  "} else {\r",
+                  "    console.warn(\"Token not found in the response payload.\");\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mr.Admin\",\r\n    \"email\": \"superadmin@gmail.com\",\r\n    \"password\": \"superadmin\",\r\n    \"role\": \"admin\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/auth/register",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Log In",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "if (response.access_token) {\r",
+                  "    pm.globals.set(\"token\", response.access_token);\r",
+                  "    console.log(\"Token saved to global variable:\", response.access_token);\r",
+                  "} else {\r",
+                  "    console.warn(\"Token not found in the response payload.\");\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"superadmin@gmail.com\",\r\n    \"password\": \"superadmin\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/auth/login/",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "auth",
+                "login",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Booking",
+      "item": [
+        {
+          "name": "Get Bookings",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"superadmin@gmail.com\",\r\n    \"password\": \"superadmin\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseURL}}/bookings",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Booking",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"superadmin@gmail.com\",\r\n    \"password\": \"superadmin\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseURL}}/bookings/699d9847750b4b2b9bff88b7",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "bookings",
+                "699d9847750b4b2b9bff88b7"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Booking",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Office Meeting 1\",\r\n    \"description\": \"Office Meeting for Project A\",\r\n    \"status\": \"pending\",\r\n    \"startTime\": \"2026-02-25T10:00:00.000Z\",\r\n    \"endTime\": \"2026-02-25T12:00:00.000Z\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/bookings",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Booking",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Office Meeting for Project B\",\r\n    \"endTime\": \"2026-02-25T18:00:00.000Z\",\r\n    \"status\": \"meeting\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/bookings/699d9847750b4b2b9bff88b7",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "bookings",
+                "699d9847750b4b2b9bff88b7"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Booking",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Sai Sai Meeting Two\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/bookings/699d9847750b4b2b9bff88b7",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "bookings",
+                "699d9847750b4b2b9bff88b7"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Bookings By User",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Sai Lin Htut Meeting 2\",\r\n    \"startTime\": \"2026-02-25T09:00:00.000Z\",\r\n    \"endTime\": \"2026-02-25T10:00:00.000Z\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseURL}}/bookings/user/699d97db750b4b2b9bff8896",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "bookings",
+                "user",
+                "699d97db750b4b2b9bff8896"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Get Users",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/users",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/users/699d85c5c439143a0e5bc69f",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "users",
+                "699d85c5c439143a0e5bc69f"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mr.Bo Bo\",\r\n    \"role\": \"owner\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/users/699e5d12414fd1858a35fd6b",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "users",
+                "699e5d12414fd1858a35fd6b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseURL}}/users/699d97db750b4b2b9bff8896",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "users",
+                "699d97db750b4b2b9bff8896"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Common",
+      "item": [
+        {
+          "name": "Documentation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8000/docs",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "docs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Documentation Json",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8000/docs-json",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "docs-json"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Welcome",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8000",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000"
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseURL",
+      "value": ""
+    },
+    {
+      "key": "baseURL",
+      "value": "",
+      "disabled": true
+    }
+  ]
+}
