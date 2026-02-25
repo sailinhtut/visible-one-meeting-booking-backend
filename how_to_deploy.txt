@@ -1,0 +1,20 @@
+How to deploy this backend 
+
+Step 1: Create vercel account. 
+Step 2: Connect with your github account.
+Step 3: Clone or upload this project into new repositary.
+Step 4: Goto Vercel Dashboard (After Logged In and Connected with Github Acc)
+Step 5: Click Create Project
+Step 6: Select this backend repositary above in step 3.
+Step 7: Once project is created, goto Project Detail Page.
+Step 8: Goto Setting Tab, then goto Build and Deployement Setting.
+Step 9: Goto Framework Setting and choose Nest JS in Framework Preset selector.
+Step 10: Then edit build commands below that selector like this. Build Commands: npm run build, Output Directory: dist, Install Command: Leave default, Development Command: Leave default.
+Step 11: Clone .env.example into .env file in your computer in root project directory.
+Step 12: Goto Setting Tab, then goto Environment Variables Setting.
+Step 13: Click Add Environment Variables and import .env file your created above. 
+Step 14: Replace mongo db url with your own in Mongoose DB 
+Alta cluster.
+Step 15: After configurting everything, try to push new commit to git repository. Then vercel will detect new commit and trigger deployment itself. You can see deployment log in Project Detail Page / Deployments Tab. 
+
+

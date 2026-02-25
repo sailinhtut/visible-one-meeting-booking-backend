@@ -24,11 +24,6 @@ import { Reflector } from '@nestjs/core';
 export class UserController {
   constructor(private userService: UserService) {}
 
-  @Get('env')
-  getEnv() {
-    return process.env;
-  }
-
   @Post()
   @Roles('admin')
   create(@Body() dto: CreateUserDto) {
