@@ -23,7 +23,7 @@ async function bootstrap() {
     exclude: [{ path: '', method: RequestMethod.GET }],
   });
 
-  // api documentation 
+  // api documentation
   const config = new DocumentBuilder()
     .setTitle('Visible One Meeting Booking API')
     .setDescription('The Visible One Meeting Booking API description')
@@ -31,7 +31,14 @@ async function bootstrap() {
     .addTag('meetings')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('/docs', app, document);
+  SwaggerModule.setup('/docs', app, document, {
+    customCss:
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.1/swagger-ui.css',
+    customJs:
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.1/swagger-ui-bundle.min.js',
+    customJsStr:
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.1/swagger-ui-standalone-preset.min.js',
+  });
 
   await app.listen(process.env.PORT ?? 8000);
 }
