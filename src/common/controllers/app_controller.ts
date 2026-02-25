@@ -9,7 +9,8 @@ export class AppController {
   getHello(): any {
     return {
       message: 'Welcome to Visible One Meeting Booking API',
-      documentation: 'Visit at /docs for API documentation',
+      documentation:
+        'Visit at /docs (UI) and /docs-json (JSON) for API documentation',
     };
   }
 }
