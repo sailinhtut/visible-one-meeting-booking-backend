@@ -58,7 +58,7 @@ export class BookingService {
         {
           id: booking._id.toString(),
           ...booking.toObject(),
-          name: 'test',
+          name: booking.name,
           userId: booking.userId
             ? {
                 id: booking.userId._id.toString(),
