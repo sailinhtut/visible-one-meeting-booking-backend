@@ -31,13 +31,18 @@ async function bootstrap() {
     .addTag('meetings')
     .build();
   const document = SwaggerModule.createDocument(app, config);
+  // SwaggerModule.setup('/docs', app, document, {
+  //   customCss:
+  //     'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.1/swagger-ui.css',
+  //   customJs:
+  //     'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.1/swagger-ui-bundle.min.js',
+  //   customJsStr:
+  //     'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.1/swagger-ui-standalone-preset.min.js',
+  // });
   SwaggerModule.setup('/docs', app, document, {
-    customCss:
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.1/swagger-ui.css',
-    customJs:
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.1/swagger-ui-bundle.min.js',
-    customJsStr:
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.1/swagger-ui-standalone-preset.min.js',
+    swaggerOptions: {
+      url: '/docs-json',
+    },
   });
 
   await app.listen(process.env.PORT ?? 8000);
