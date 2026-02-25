@@ -1,0 +1,11 @@
+{
+  "builds": [
+    {
+      "src": "dist/main.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["node_modules/swagger-ui-dist/**"]
+      }
+    }
+  ]
+}
