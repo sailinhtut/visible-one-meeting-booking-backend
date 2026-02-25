@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.1/swagger-ui.css"
+    />
+  </head>
+  <body>
+    <div id="swagger-ui"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.1/swagger-ui-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.1/swagger-ui-standalone-preset.min.js"></script>
+
+    <script>
+      SwaggerUIBundle({
+        url: '/docs-json',
+        dom_id: '#swagger-ui',
+      });
+    </script>
+  </body>
+</html>
