@@ -205,7 +205,7 @@ export class BookingService {
 
     if (
       currentUser.role === 'user' &&
-      existing.userId.toString() !== currentUser.id
+      booking.userId.toString() !== currentUser.id
     ) {
       throw new ForbiddenException(
         'You are not allowed to delete this booking',
