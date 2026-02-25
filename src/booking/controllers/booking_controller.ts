@@ -18,7 +18,10 @@ import { CreateBookingDto } from '../dtos/create_booking';
 import { BookingService } from '../services/booking_service';
 import { UpdateBookingDto } from '../dtos/update_booking';
 
-@Controller('bookings')
+@Controller({
+  path: 'bookings',
+  version: '1',
+})
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class BookingController {
   constructor(private bookingService: BookingService) {}

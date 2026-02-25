@@ -4,6 +4,7 @@ import { BookingModule } from './booking/booking.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './user/user.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         uri: configService.get<string>('MONGO_URI'),
       }),
     }),
+    CommonModule,
     AuthModule,
     UserModule,
     BookingModule,

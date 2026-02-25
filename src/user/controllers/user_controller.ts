@@ -16,7 +16,10 @@ import { Roles } from 'src/auth/decorators/roles';
 import { UpdateUserDto } from '../dtos/update_user';
 import { Reflector } from '@nestjs/core';
 
-@Controller('users')
+@Controller({
+  path: 'users',
+  version: '1',
+})
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class UserController {
   constructor(private userService: UserService) {}
