@@ -27,7 +27,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:5173', // react local server
-      'visible-one-meeting-booking-website.vercel.app', // production frontend
+      'https://visible-one-meeting-booking-website.vercel.app', // production frontend
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
